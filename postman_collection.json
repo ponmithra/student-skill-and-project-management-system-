@@ -1,0 +1,119 @@
+{
+  "info": {
+    "name": "Student Skill and Project Management System",
+    "description": "REST API collection for the Django backend.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "base_url", "value": "http://127.0.0.1:8000/api" },
+    { "key": "record_id", "value": "1" }
+  ],
+  "item": [
+    {
+      "name": "List records",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "{{base_url}}/records/", "host": ["{{base_url}}"], "path": ["records", ""] }
+      }
+    },
+    {
+      "name": "Search and filter records",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/records/?search=python&department=CSE&year=3",
+          "host": ["{{base_url}}"],
+          "path": ["records", ""],
+          "query": [
+            { "key": "search", "value": "python" },
+            { "key": "department", "value": "CSE" },
+            { "key": "year", "value": "3" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Create record",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Anitha Raman\",\n  \"register_number\": \"20CSE1001\",\n  \"email\": \"anitha.raman@example.edu\",\n  \"department\": \"CSE\",\n  \"year\": 3,\n  \"skills\": \"Python, Django, SQL\",\n  \"skill_level\": \"Intermediate\",\n  \"project_title\": \"Campus Placement Portal\",\n  \"project_description\": \"A portal that lets students apply for campus drives and track results.\",\n  \"technology\": \"Django, React, SQLite\",\n  \"project_status\": \"In Progress\",\n  \"github_link\": \"https://github.com/anitha/placement-portal\"\n}"
+        },
+        "url": { "raw": "{{base_url}}/records/", "host": ["{{base_url}}"], "path": ["records", ""] }
+      }
+    },
+    {
+      "name": "Retrieve record",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/records/{{record_id}}/",
+          "host": ["{{base_url}}"],
+          "path": ["records", "{{record_id}}", ""]
+        }
+      }
+    },
+    {
+      "name": "Update record (PUT)",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Anitha Raman\",\n  \"register_number\": \"20CSE1001\",\n  \"email\": \"anitha.raman@example.edu\",\n  \"department\": \"CSE\",\n  \"year\": 4,\n  \"skills\": \"Python, Django, SQL, React\",\n  \"skill_level\": \"Advanced\",\n  \"project_title\": \"Campus Placement Portal\",\n  \"project_description\": \"A portal that lets students apply for campus drives and track results.\",\n  \"technology\": \"Django, React, SQLite\",\n  \"project_status\": \"Completed\",\n  \"github_link\": \"https://github.com/anitha/placement-portal\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/records/{{record_id}}/",
+          "host": ["{{base_url}}"],
+          "path": ["records", "{{record_id}}", ""]
+        }
+      }
+    },
+    {
+      "name": "Update status (PATCH)",
+      "request": {
+        "method": "PATCH",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"project_status\": \"On Hold\"\n}" },
+        "url": {
+          "raw": "{{base_url}}/records/{{record_id}}/",
+          "host": ["{{base_url}}"],
+          "path": ["records", "{{record_id}}", ""]
+        }
+      }
+    },
+    {
+      "name": "Delete record",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/records/{{record_id}}/",
+          "host": ["{{base_url}}"],
+          "path": ["records", "{{record_id}}", ""]
+        }
+      }
+    },
+    {
+      "name": "Dashboard statistics",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "{{base_url}}/stats/", "host": ["{{base_url}}"], "path": ["stats", ""] }
+      }
+    },
+    {
+      "name": "Dropdown options",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "{{base_url}}/options/", "host": ["{{base_url}}"], "path": ["options", ""] }
+      }
+    }
+  ]
+}
